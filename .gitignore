@@ -1,0 +1,25 @@
+# 构建 / 本地文件
+build/
+dist/
+*.log
+
+# 发布物与原始素材（不进仓库）
+apk/
+source-assets/
+
+# 签名材料与口令：绝不入库
+keystore.jks
+*.jks
+*.keystore
+.kspass
+
+# 编辑器 / 系统
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# 内部交接与工作记录，不发布
+docs/
+README-HANDOFF.md

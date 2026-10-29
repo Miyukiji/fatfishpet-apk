@@ -1,0 +1,5 @@
+# dsh-whalepet-bridge bundle patch：一个纯宿主侧数据插件（无 UI / 无宠物 / 无通知）。
+# 只为安卓 App 提供三个只读 GET 接口；不声明模块级 inject，缺服务时自动降级。
+- insert:
+    - id: dsh-whalepet-bridge
+      name: 'dsh-whalepet-bridge'

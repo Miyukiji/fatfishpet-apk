@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">大肥鱼桌宠</string>
+    <string name="a11y_desc">用来判断当前是不是在全屏游戏里，以便自动收起桌宠。不读取屏幕内容。</string>
+
+    <!-- ==================== 通用按钮 / 状态词（多处复用） ==================== -->
+    <string name="common_save">保存</string>
+    <string name="common_saved">已保存</string>
+    <string name="common_cancel">取消</string>
+    <string name="common_ok">知道了</string>
+    <string name="common_granted">已授权</string>
+    <string name="common_login">登录</string>
+    <string name="common_logout">退出登录</string>
+
+    <!-- ==================== 首页 MainActivity：标题 / 底栏 / 外观页 ==================== -->
+    <string name="main_title">大肥鱼桌宠</string>
+    <string name="main_subtitle">双击余额+花费 · 三击开应用 · 长按 0.6 秒弹菜单 · 拖动</string>
+    <string name="main_btn_summon">召唤大肥鱼</string>
+    <string name="main_btn_rest">让她休息</string>
+    <string name="main_tab_home">首页</string>
+    <string name="main_tab_perm">权限</string>
+    <string name="main_tab_data">数据</string>
+
+    <string name="main_sec_size">尺寸</string>
+    <string name="main_size_small">小</string>
+    <string name="main_size_mid">中</string>
+    <string name="main_size_large">大</string>
+
+    <string name="main_sec_triple_app">三击打开的应用</string>
+    <string name="main_btn_pick_app">选择已安装应用</string>
+
+    <string name="main_sec_actions">动作</string>
+    <string name="main_btn_expand_actions">展开动作列表</string>
+    <string name="main_btn_expand_actions_count">展开动作列表（%1$d）</string>
+    <string name="main_btn_collapse_actions_count">收起动作列表（%1$d）</string>
+
+    <string name="main_sec_assets">素材</string>
+    <string name="main_credit">动作素材：dsh-whale-girl-pet（yanzwzz）与 dsh-pet（PC2005-cloud）· 非商用</string>
+    <string name="main_btn_help">使用说明</string>
+
+    <!-- ==================== 首页 MainActivity：权限页 ==================== -->
+    <string name="main_sec_overlay">悬浮窗权限</string>
+    <string name="main_btn_grant">去授权</string>
+
+    <string name="main_sec_usage_access">使用情况访问（「先躲起来」用）</string>
+    <string name="main_btn_grant_usage">去授权使用情况访问</string>
+    <string name="main_note_usage_access">「先躲起来」靠它判断你什么时候切走应用。不授权也能用，但切走后可能不会自动恢复，需要用首页「召唤」。</string>
+
+    <string name="main_sec_a11y">无障碍（用于「游戏/全屏时自动收起」）</string>
+    <string name="main_btn_grant_a11y">去开启无障碍</string>
+
+    <string name="main_sec_battery">电池优化白名单（Android 标准）</string>
+    <string name="main_btn_grant_battery">去加入白名单</string>
+
+    <string name="main_sec_location">天气定位（可选，授权后按坐标查天气）</string>
+    <string name="main_btn_allow_location">允许定位</string>
+
+    <!-- ==================== 首页 MainActivity：数据页 ==================== -->
+    <string name="main_sec_api_key">DeepSeek API Key（只用来查余额；已登录账户时可留空）</string>
+    <string name="main_sec_data_source">用量数据源（默认本机 127.0.0.1，仅设备内部）</string>
+    <string name="main_sec_account">账户（读今日 / 累计）</string>
+    <string name="main_sec_website">官网用量</string>
+    <string name="main_btn_open_website">打开官网用量页</string>
+    <string name="main_sec_plugin">数据桥插件（可选）</string>
+    <string name="main_btn_export_plugin">导出插件</string>
+    <string name="main_btn_install_cmd">安装口令</string>
+    <string name="main_foot">v%1$s · 素材：dsh-pet / dsh-whale-girl-pet（非商用）· 不发通知 · 状态/用量只走本机，账户与天气走网络</string>
+
+    <!-- ==================== 首页 MainActivity：选应用对话框 ==================== -->
+    <string name="main_hint_search">搜索应用名或包名</string>
+    <string name="main_dlg_pick_title">三击打开</string>
+    <string name="main_target_unset">未设置（三击不会打开应用）</string>
+    <string name="main_target_line">%1$s（%2$s）%3$s</string>
+    <!-- 引号只为保留前导空格：实际值是「 · 未安装」 -->
+    <string name="main_target_uninstalled">" · 未安装"</string>
+
+    <!-- ==================== 首页 MainActivity：导出插件对话框与安装口令 ==================== -->
+    <string name="main_dlg_exported_title">已导出</string>
+    <string name="main_dlg_exported_msg">下载/DSH/%1$s\n\n装法一（推荐）：把「复制安装口令」里的那段话发给 DSH 里的 AI，让它装。\n\n装法二：解压到 DSH 的插件目录，在 profile 的 bundles 里加上 dsh-whalepet-bridge，重启 DSH。</string>
+    <string name="main_btn_copy_cmd">复制安装口令</string>
+    <string name="main_install_cmd">把 下载/DSH/%1$s 解压成 $DSH_HOME/profiles/web/node_modules/whalepet-bridge（目录名就叫 whalepet-bridge），然后往 $DSH_HOME/profiles/web/package.json 的 dsh.profile.bundles 末尾加一项 \"dsh-whalepet-bridge\"，最后重启 DSH。装好后 /api/whalepet/ping 应该返回 ok。</string>
+
+    <!-- ==================== 首页 MainActivity：状态行 ==================== -->
+    <string name="main_state_plugin_ok">已连接（本机消耗可用）</string>
+    <string name="main_state_plugin_off">未连接 —— 双击面板里不会显示本机消耗</string>
+    <string name="main_a11y_toggle">游戏/全屏时自动收起：%1$s</string>
+    <string name="main_state_on">开</string>
+    <string name="main_state_off">关</string>
+    <string name="main_state_overlay_off">未授权 —— 小人出不来</string>
+    <string name="main_state_a11y_on">无障碍：已开启</string>
+    <string name="main_state_a11y_off">无障碍：未开启（游戏/全屏不会自动收起）</string>
+    <string name="main_state_account_on">已登录（面板显示账户数据）</string>
+    <string name="main_state_account_off">未登录（面板只有余额和本机）</string>
+    <string name="main_state_battery_on">电池优化：已加入白名单</string>
+    <string name="main_state_battery_off">电池优化：未加入（后台可能被系统清理）</string>
+    <string name="main_state_usage_on">使用情况访问：已授权</string>
+    <string name="main_state_usage_off">使用情况访问：未授权 —— 目前不会自动收起（也不会误收）</string>
+    <string name="main_key_ok">Key 可用</string>
+    <string name="main_key_ok_reason">Key 可用（%1$s）</string>
+    <string name="main_key_state">Key 状态：%1$s</string>
+    <string name="main_error_timeout">超时</string>
+
+    <!-- ==================== 首页 MainActivity：Toast ==================== -->
+    <string name="main_toast_need_overlay">先给悬浮窗权限，她才出得来</string>
+    <string name="main_toast_already">她已经在上班啦，别催～</string>
+    <string name="main_toast_summoned">大肥鱼来啦</string>
+    <string name="main_toast_not_running">她不在喔，先召唤她吧</string>
+    <string name="main_toast_resting">她去休息了</string>
+    <string name="main_toast_no_overlay_settings">打不开授权页</string>
+    <string name="main_toast_no_usage_settings">打不开使用情况设置</string>
+    <string name="main_toast_no_a11y_settings">打不开无障碍设置</string>
+    <string name="main_toast_no_battery_settings">打不开电池优化设置</string>
+    <string name="main_toast_no_login_page">打不开登录页</string>
+    <string name="main_toast_no_browser">打不开浏览器</string>
+    <string name="main_toast_no_apps">没查到可启动的应用</string>
+    <string name="main_toast_no_write_target">系统没给写入位置</string>
+    <string name="main_toast_export_failed">导出失败：%1$s</string>
+    <string name="main_toast_cmd_copied">安装口令已复制</string>
+    <string name="main_toast_copy_failed">复制失败：%1$s</string>
+    <string name="main_toast_restored_local">已恢复本机</string>
+
+    <!-- ==================== 使用说明 HelpActivity ==================== -->
+    <string name="help_title">使用说明</string>
+    <string name="help_head_gesture">手势</string>
+    <string name="help_body_gesture">单击：压扁回弹，并随机播一个点击回应\n双击：打开面板（余额、本机今日/累计、账户今日/累计、天气），并轮播「看天气 / 翻钱包」\n三击：打开你设置的应用（默认未设置，三击会提示去首页选）\n长按：按住约 0.6 秒，菜单当场弹出（不用松手）\n拖动：移动位置；用力甩会飞出去、撞边反弹</string>
+    <string name="help_head_idle">自己会做什么</string>
+    <string name="help_body_idle">空闲时随机播日常动作；23:00–06:00 播睡眠动作；\n白天每隔 1.5~3 分钟会自己走一小段：横向（快，走路素材）/ 纵向（慢，漂浮素材）/ 对角（四方向，按速度选素材）</string>
+    <string name="help_head_temp_hide">先躲起来</string>
+    <string name="help_body_temp_hide">隐藏桌宠，离开当前应用时自动恢复。需要「使用情况访问」权限或无障碍；两者都没开时不会自动恢复，需要用首页「召唤」。</string>
+    <string name="help_head_auto_hide">自动收起</string>
+    <string name="help_body_auto_hide">前台是游戏或全屏视频时自动隐藏，退出后恢复。需要开启「无障碍」服务。</string>
+    <string name="help_group_dsh">用 DSH 才需要看（没有 DSH 可以跳过）</string>
+    <string name="help_group_dsh_body">状态联动：思考 / 干活 / 等你确认 / 需要你回答 / 出错 / 一轮结束，各有对应动作。\n\n确认命令：DSH 需要确认时，桌宠弹出「允许一次 / 拒绝」；90 秒无操作自动交还。\n\n提问提醒：DSH 需要你选择或回答时，桌宠弹常驻气泡并播等待动作，回答后自动收起。\n\n账户数据：数据页登录一次（手机号或邮箱密码），之后面板自动显示余额、账户今日与累计；令牌失效会提示重新登录。\n\n本机花费：读本机 DSH 的用量账本，需要 DSH 正在运行并加载数据桥插件。</string>
+
+    <!-- ==================== 桌宠服务 PetService：菜单 / 气泡 / Toast ==================== -->
+    <string name="pet_menu_title">大肥鱼</string>
+    <string name="pet_menu_feed">喂食</string>
+    <string name="pet_menu_actions">动作点播</string>
+    <string name="pet_menu_settings">设置</string>
+    <string name="pet_menu_temp_hide">先躲起来</string>
+    <string name="pet_bubble_need_user">🙋 需要你回应：%1$s</string>
+    <string name="pet_bubble_need_user_short">🙋 需要你回应</string>
+    <string name="pet_menu_help">使用说明</string>
+    <string name="pet_menu_rest">让她休息</string>
+    <string name="pet_menu_close">关闭菜单</string>
+
+    <string name="pet_panel_actions_title">点一个动作</string>
+
+    <string name="pet_bubble_calling">我去把%1$s叫出来～</string>
+    <string name="pet_bubble_no_asset">缺素材</string>
+    <string name="pet_bubble_night">这么晚还不睡呀…</string>
+    <string name="pet_bubble_morning">早上好～今天也要顺顺利利</string>
+    <string name="pet_bubble_late_night">夜深了，早点休息哦</string>
+    <string name="pet_bubble_feed">开饭啦～</string>
+    <string name="pet_bubble_thinking">我在想…</string>
+    <string name="pet_bubble_working">我干活啦</string>
+    <string name="pet_bubble_waiting">在等你确认一下～</string>
+    <string name="pet_bubble_error">出错啦，去看一眼？</string>
+    <string name="pet_bubble_done">这一轮搞定啦</string>
+    <!-- 引号只为保留尾部空格：实际值是「搞定啦 · 」 -->
+    <string name="pet_bubble_done_with_time">"搞定啦 · "</string>
+    <string name="pet_bubble_today_cost">（今日 ¥%1$s）</string>
+    <string name="pet_bubble_no_target">三击还没设置目标，去首页选一个吧</string>
+
+    <string name="pet_approval_title">要执行一个操作</string>
+    <string name="pet_approval_no_desc">（未提供说明）</string>
+    <string name="pet_btn_allow_once">允许一次</string>
+    <string name="pet_btn_deny">拒绝</string>
+    <string name="pet_bubble_approval_pending">有个操作要你确认</string>
+    <string name="pet_bubble_allowed">好，这次放行</string>
+    <string name="pet_bubble_denied">已拒绝</string>
+    <string name="pet_bubble_approval_failed">没送到 DSH（可能已超时）</string>
+    <string name="pet_bubble_approval_remind">有个操作还在等你确认（点了「允许一次」才会继续）</string>
+
+    <string name="pet_target_app_fallback">应用</string>
+    <string name="pet_toast_overlay_failed">悬浮窗没加上：去系统设置给「显示在其他应用上层」</string>
+    <string name="pet_toast_resize_failed">改尺寸失败：%1$s</string>
+    <string name="pet_toast_no_target_app">没找到要打开的应用（可在 App 里改「三击打开」的包名）</string>
+    <string name="pet_toast_no_settings_page">打不开设置页</string>
+
+    <!-- ==================== 双击面板 WalletPanel ==================== -->
+    <string name="wallet_title">用量</string>
+    <string name="wallet_balance_na">"余额  --"</string>
+    <string name="wallet_weather_loading">天气查询中…</string>
+    <string name="wallet_weather_fail">查不到天气（网络？）</string>
+    <string name="wallet_local_na">"本机  --"</string>
+    <string name="wallet_local_na_nobridge">"本机  --（桥没响应）"</string>
+    <string name="wallet_acct_na">"账户  --"</string>
+    <string name="wallet_acct_na_login">"账户  --（请重新登录）"</string>
+    <!-- 引号只为保留尾部空格：实际值是「账户  」 -->
+    <string name="wallet_acct_prefix">"账户  "</string>
+    <string name="wallet_acct_line">"账户  今日 %1$s · %2$s"</string>
+    <!-- 引号只为保留尾部空格：实际值是「余额  」 -->
+    <string name="wallet_balance_prefix">"余额  "</string>
+    <string name="wallet_balance_money">"余额  ¥%1$s"</string>
+    <string name="wallet_local_label_recent">近2天</string>
+    <string name="wallet_local_label_total">累计</string>
+    <string name="wallet_local_line">"本机  今日 %1$s · %2$s %3$s"</string>
+    <string name="wallet_total_month">本月 %1$s</string>
+    <string name="wallet_total_all">累计 %1$s</string>
+
+    <!-- ==================== 登录页 AccountLoginActivity ==================== -->
+    <string name="login_hint">请在下方用手机号或邮箱密码登录；登录成功后本页会自动关闭。</string>
+    <string name="login_hint_google">Google 登录在内嵌浏览器会被拒绝（卡在登录页）。\n请返回后改用「邮箱 + 密码」登录。</string>
+    <string name="login_hint_ok">已登录，可以直接返回。</string>
+    <string name="login_toast_saved">已保存登录</string>
+    <string name="wx_clear">晴</string>
+    <string name="wx_partly">少云</string>
+    <string name="wx_overcast">阴</string>
+    <string name="wx_fog">雾</string>
+    <string name="wx_drizzle">毛毛雨</string>
+    <string name="wx_rain">雨</string>
+    <string name="wx_snow">雪</string>
+    <string name="wx_showers">阵雨</string>
+    <string name="wx_snow_showers">阵雪</string>
+    <string name="wx_thunder">雷雨</string>
+    <string name="wx_cloudy">多云</string>
+    <string name="wx_unknown">查不到天气（网络？）</string>
+    <string name="wx_tomorrow_prefix">明日</string>
+    <string name="wx_feels_prefix">体感</string>
+    <string name="wx_humidity_prefix">湿度</string>
+    <string name="wx_dash">--</string>
+    <string name="wx_sep">·</string>
+    <string name="bal_no_key">还没填 API Key</string>
+    <string name="bal_key_bad">API Key 不对（HTTP %1$d）</string>
+    <string name="bal_http">查询失败：HTTP %1$d</string>
+    <string name="bal_timeout">查询超时（网络慢？）</string>
+    <string name="bal_dns">连不上 api.deepseek.com（网络）</string>
+    <string name="bal_fail">查询失败：%1$s</string>
+    <string name="bal_not_json">返回内容不是 JSON</string>
+    <string name="bal_not_obj">返回内容不是 JSON 对象</string>
+    <string name="bal_no_currency">余额接口没有返回币种</string>
+    <string name="bal_unavailable">账户当前不可用（余额不足？）</string>
+    <string name="br_no_bridge">没有可用的用量数据桥</string>
+    <string name="br_stats_fail">统计接口返回失败</string>
+    <string name="br_dur_prefix">用时</string>
+    <string name="br_sep">·</string>
+    <string name="wx_desc_00">雷阵雨</string>
+    <string name="wx_desc_01">雷雨</string>
+    <string name="wx_desc_02">可能有雷阵雨</string>
+    <string name="wx_desc_03">零星毛毛雨</string>
+    <string name="wx_desc_04">冻雨</string>
+    <string name="wx_desc_05">局部有雨</string>
+    <string name="wx_desc_06">可能有雨</string>
+    <string name="wx_desc_07">局部有雪</string>
+    <string name="wx_desc_08">零星小雨</string>
+    <string name="wx_desc_09">暴雨</string>
+    <string name="wx_desc_10">中雨</string>
+    <string name="wx_desc_11">大雨</string>
+    <string name="wx_desc_12">小雨</string>
+    <string name="wx_desc_13">毛毛雨</string>
+    <string name="wx_desc_14">中雪</string>
+    <string name="wx_desc_15">大雪</string>
+    <string name="wx_desc_16">小雪</string>
+    <string name="wx_desc_17">吹雪</string>
+    <string name="wx_desc_18">冻雾</string>
+    <string name="wx_desc_19">多云</string>
+    <string name="wx_desc_20">烟霾</string>
+    <string name="wx_desc_21">雷暴</string>
+    <string name="wx_desc_22">阴</string>
+    <string name="wx_desc_23">多云</string>
+    <string name="wx_desc_24">晴</string>
+    <string name="wx_desc_25">晴</string>
+    <string name="wx_desc_26">薄雾</string>
+    <string name="wx_desc_27">雾</string>
+    <string name="wx_desc_28">霾</string>
+    <string name="wx_desc_29">烟霾</string>
+    <string name="wx_desc_30">雨夹雪</string>
+    <string name="wx_desc_31">雪</string>
+    <string name="wx_desc_32">雨</string>
+    <string name="pet_menu_whisper">碎碎念</string>
+    <string name="pet_bubble_balance">余额 ¥%1$s</string>
+    <string-array name="whisper_lines">
+        <item>今天的风有点舒服。</item>
+        <item>电脑好烫，是不是该歇会儿？</item>
+        <item>不知道 DSH 在忙什么。</item>
+        <item>想喝奶茶……</item>
+        <item>摸鱼一下应该没关系吧。</item>
+        <item>尾巴有点酸。</item>
+        <item>要不要一起休息？</item>
+        <item>我一直在这儿哦。</item>
+    </string-array>
+    <string name="help_head_credits">素材与许可</string>
+    <string name="help_body_credits">角色与动画素材（社区二创，非 DeepSeek 官方形象）：\n· dsh-whale-girl-pet（yanzwzz）\nhttps://github.com/yanzwzz/dsh-whale-girl-pet\n· dsh-pet（PC2005-cloud）\nhttps://github.com/PC2005-cloud/dsh-pet\n素材非商用；转载或二创请保留署名并遵守上游许可。</string>
+</resources>
