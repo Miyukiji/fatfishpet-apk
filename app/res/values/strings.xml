@@ -144,6 +144,7 @@
     <string name="pet_toast_no_target_app">App to open not found (change the Open on triple tap package in the app)</string>
     <string name="pet_toast_no_settings_page">Cannot open the settings page</string>
     <string name="wallet_title">Usage</string>
+    <string name="wallet_balance_loading">Balance: checking…</string>
     <string name="wallet_balance_na">"Balance  --"</string>
     <string name="wallet_weather_loading">Checking weather…</string>
     <string name="wallet_weather_fail">Cannot get the weather (network?)</string>

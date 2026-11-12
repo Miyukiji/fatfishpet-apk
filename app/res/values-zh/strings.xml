@@ -180,6 +180,7 @@
 
     <!-- ==================== 双击面板 WalletPanel ==================== -->
     <string name="wallet_title">用量</string>
+    <string name="wallet_balance_loading">余额查询中…</string>
     <string name="wallet_balance_na">"余额  --"</string>
     <string name="wallet_weather_loading">天气查询中…</string>
     <string name="wallet_weather_fail">查不到天气（网络？）</string>

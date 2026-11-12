@@ -144,6 +144,7 @@
     <string name="pet_toast_no_target_app">開くアプリが見つかりません（アプリ内で「トリプルタップで開く」のパッケージ名を変更できます）</string>
     <string name="pet_toast_no_settings_page">設定ページを開けません</string>
     <string name="wallet_title">使用量</string>
+    <string name="wallet_balance_loading">残高を確認中…</string>
     <string name="wallet_balance_na">"残高  --"</string>
     <string name="wallet_weather_loading">天気を取得中…</string>
     <string name="wallet_weather_fail">天気を取得できません（ネットワーク？）</string>

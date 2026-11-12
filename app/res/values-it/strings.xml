@@ -144,6 +144,7 @@
     <string name="pet_toast_no_target_app">App da aprire non trovata (cambia il pacchetto di «Apri con tre tocchi» nell\'app)</string>
     <string name="pet_toast_no_settings_page">Impossibile aprire la pagina delle impostazioni</string>
     <string name="wallet_title">Utilizzo</string>
+    <string name="wallet_balance_loading">Saldo: verifica…</string>
     <string name="wallet_balance_na">"Saldo  --"</string>
     <string name="wallet_weather_loading">Controllo del meteo…</string>
     <string name="wallet_weather_fail">Meteo non disponibile (rete?)</string>

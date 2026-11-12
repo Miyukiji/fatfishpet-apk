@@ -44,7 +44,7 @@ public final class WalletPanel {
     /** 组装面板并立刻开始取数。 */
     public LinearLayout build() {
         box = card(ctx.getString(R.string.wallet_title));
-        bal = body(ctx.getString(R.string.wallet_balance_na), 16f, Color.WHITE);
+        bal = body(ctx.getString(R.string.wallet_balance_loading), 16f, Color.WHITE);
         local = body(cachedLocal(), 14f, 0xFFD6E1F5);
         acctToday = body(cachedAcct(), 14f, 0xFFD6E1F5);
 
@@ -70,10 +70,14 @@ public final class WalletPanel {
 
     /** 上次成功取到的本机行（先显示，避免首帧空白）。 */
     private String cachedLocal() {
+        // 有上次结果就先显示，哪怕已过期；后台会再刷新，别让面板首帧空着。
         String l = prefs().getString("localLine", "");
-        long at = prefs().getLong("localAt", 0L);
-        return l.isEmpty() || System.currentTimeMillis() - at > 10 * 60_000L
-                ? ctx.getString(R.string.wallet_local_na) : l;
+        return l.isEmpty() ? ctx.getString(R.string.wallet_local_na) : l;
+    }
+
+    /** 余额只显示本次查询结果：不读旧缓存，避免把过期的钱数当实时数据。 */
+    private void setBalanceValue(String value) {
+        if (bal != null) bal.setText(ctx.getString(R.string.wallet_balance_prefix) + value);
     }
 
     /** 面板关闭/服务销毁后 io 池可能已关：在途回调再提交任务不要炸主线程。 */
@@ -103,7 +107,7 @@ public final class WalletPanel {
                     double acct = accountBalance();
                     if (!Double.isNaN(acct)) line = "¥" + Bridge.fmt(acct);
                 }
-                bal.setText(ctx.getString(R.string.wallet_balance_prefix) + line);
+                setBalanceValue(line);
                 if (onHeightChanged != null) onHeightChanged.run();
             });
         }, "wal-bal");
@@ -185,7 +189,7 @@ public final class WalletPanel {
             acctToday.setText(cached);        // 5 分钟内不重复请求
             double acctBal = accountBalance();
             if (!Double.isNaN(acctBal) && bal.getText().toString().contains("--")) {
-                bal.setText(ctx.getString(R.string.wallet_balance_money, Bridge.fmt(acctBal)));
+                setBalanceValue(Bridge.fmt(acctBal));
             }
             return;
         }
@@ -215,7 +219,7 @@ public final class WalletPanel {
                         : ctx.getString(R.string.wallet_total_all, money(sp.total));
                 acctBalance = sp.balance;
                 if (!Double.isNaN(sp.balance) && (bal.getText().toString().contains("--"))) {
-                    bal.setText(ctx.getString(R.string.wallet_balance_money, Bridge.fmt(sp.balance)));
+                    setBalanceValue(Bridge.fmt(sp.balance));
                 }
                 String line = ctx.getString(R.string.wallet_acct_line, todayTxt, totalTxt);
                 acctToday.setText(line);

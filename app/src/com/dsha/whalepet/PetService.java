@@ -125,6 +125,8 @@ public class PetService extends Service implements PetSurface.Listener {
     private final ExecutorService io = Executors.newSingleThreadExecutor();
     /** 长轮询专用线程：避免长挂起占住 io（余额/账户也在用 io）。 */
     private final ExecutorService net = Executors.newFixedThreadPool(2);
+    /** 面板取数：独立池，别和 io 单线程排队（余额/账户/天气互不阻塞）。 */
+    private final ExecutorService panelIo = Executors.newCachedThreadPool();
     private StatusClient statusClient;
     private final Random rnd = new Random();
 
@@ -431,6 +433,14 @@ public class PetService extends Service implements PetSurface.Listener {
     private void refitToScreen() {
         try {
             Rect b = bounds();
+            // 只有屏幕边界真的变了才重排。状态栏/导航栏临时显隐、切最近任务都会回调
+            // onConfigurationChanged；每次都重算锚点会把人物往一侧挤，回来也不复原。
+            if (b.width() == screenW && b.height() == screenH) {
+                if (panelShown) placePanel();
+                placeMenu();
+                if (bubbleWin.isShown()) placeBubble();
+                return;
+            }
             screenW = b.width();
             screenH = b.height();
             // 用“当前窗口位置”反算锚点：拖动/移动只改了 px/py，anchorX 字段可能是旧的
@@ -699,6 +709,7 @@ public class PetService extends Service implements PetSurface.Listener {
         }
         io.shutdownNow();
         net.shutdownNow();
+        panelIo.shutdownNow();
         if (pet != null) {
             pet.stop();
             remove(petView);
@@ -1843,7 +1854,7 @@ public class PetService extends Service implements PetSurface.Listener {
         hideMenu();
         hideBubble();
         panelKind = "wallet";
-        walletPanel = new WalletPanel(this, main, io,
+        walletPanel = new WalletPanel(this, main, panelIo,
                 () -> { if (panelShown) placePanel(); });
         presentPanel(walletPanel.build());
     }
@@ -2055,7 +2066,14 @@ public class PetService extends Service implements PetSurface.Listener {
 
     private Rect bounds() {
         try {
-            return wm.getCurrentWindowMetrics().getBounds();
+            if (android.os.Build.VERSION.SDK_INT >= 30) {
+                // getMaximumWindowMetrics 不随状态栏/导航栏临时显隐变化，开屏广告和最近任务里不会把
+                // 锚点夹到一个临时更小的屏高，回来时人就纵向跑位。
+                return wm.getMaximumWindowMetrics().getBounds();
+            }
+            android.util.DisplayMetrics dm = new android.util.DisplayMetrics();
+            wm.getDefaultDisplay().getRealMetrics(dm);
+            return new Rect(0, 0, dm.widthPixels, dm.heightPixels);
         } catch (Throwable t) {
             return new Rect(0, 0, dp(360), dp(780));
         }

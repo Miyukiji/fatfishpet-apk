@@ -111,7 +111,7 @@ if (-not (Test-Path $KS)) {
     -dname "CN=WhalePet, OU=DSHA, O=dsha, L=Local, S=Local, C=CN"
 }
 
-$APK = Join-Path $OUT "whalepet-$VerName.apk"
+$APK = Join-Path $OUT "fatfishpet-$VerName.apk"
 & $APKSIGNER sign --ks $KS --ks-key-alias $KS_ALIAS `
   --ks-pass "pass:$KS_PASS" --key-pass "pass:$KS_PASS" `
   --min-sdk-version $MIN_SDK `

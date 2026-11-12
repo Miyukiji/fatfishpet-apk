@@ -93,7 +93,7 @@ if [ ! -f "$KS" ]; then
     -dname "CN=WhalePet, OU=DSHA, O=dsha, L=Local, S=Local, C=CN" >/dev/null 2>&1
 fi
 
-APK="$OUT/whalepet-$VER_NAME.apk"
+APK="$OUT/fatfishpet-$VER_NAME.apk"
 "$APKSIGNER" sign --ks "$KS" --ks-key-alias "$KS_ALIAS" \
   --ks-pass "pass:$KS_PASS" --key-pass "pass:$KS_PASS" \
   --min-sdk-version $MIN_SDK \
