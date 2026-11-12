@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Big Fat Fish Desk Pet</string>
+    <string name="app_name">FatFishPet</string>
     <string name="a11y_desc">Checks if a full-screen game is in front so the pet can hide. Does not read screen content.</string>
     <string name="common_save">Save</string>
     <string name="common_saved">Saved</string>

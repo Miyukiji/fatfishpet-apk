@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Pesce Grasso da Scrivania</string>
+    <string name="app_name">FatFishPet</string>
     <string name="a11y_desc">Serve a capire se c\'è un gioco a schermo intero in primo piano, così la mascotte si nasconde. Non legge lo schermo.</string>
     <string name="common_save">Salva</string>
     <string name="common_saved">Salvato</string>

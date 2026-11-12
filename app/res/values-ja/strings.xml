@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">大肥魚デスクトップペット</string>
+    <string name="app_name">FatFishPet</string>
     <string name="a11y_desc">全画面ゲーム中かどうかを判定し、ペットを自動で隠すために使います。画面の内容は読み取りません。</string>
     <string name="common_save">保存</string>
     <string name="common_saved">保存しました</string>
