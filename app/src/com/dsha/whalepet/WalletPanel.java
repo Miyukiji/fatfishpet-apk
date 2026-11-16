@@ -97,22 +97,18 @@ public final class WalletPanel {
         final String key = AccountSession.apiKey(ctx);
         // 余额单独一条线程、拿到就更新，与桥并行。不再 join 等它：Http 的连接、读取各有一个
         // 6s 超时，最坏要 12s，之前 6.5s 就判"超时"，会把慢网下已经成功的结果丢掉。
-        Thread tb = new Thread(() -> {
-            final BalanceClient.Result b = BalanceClient.fetch(key, 6000);
-            main.post(() -> {
-                if (disposed) return;
-                String line = BalanceFmt.statusLine(b);
-                if (key.isEmpty()) {
-                    // 没填 Key 但账户登录过：用账户 summary 里的余额兜底，别一直显示"还没填 Key"
-                    double acct = accountBalance();
-                    if (!Double.isNaN(acct)) line = "¥" + Bridge.fmt(acct);
-                }
-                setBalanceValue(line);
-                if (onHeightChanged != null) onHeightChanged.run();
-            });
-        }, "wal-bal");
-        tb.setDaemon(true);
-        tb.start();
+        if (!key.isEmpty()) {
+            Thread tb = new Thread(() -> {
+                final BalanceClient.Result b = BalanceClient.fetch(key, 6000);
+                main.post(() -> {
+                    if (disposed) return;
+                    setBalanceValue(BalanceFmt.statusLine(b));
+                    if (onHeightChanged != null) onHeightChanged.run();
+                });
+            }, "wal-bal");
+            tb.setDaemon(true);
+            tb.start();
+        }
         ioRun(() -> {
             final Bridge.Usage u = Bridge.usage(4000);
             main.post(() -> {
@@ -182,17 +178,7 @@ public final class WalletPanel {
         final String token = AccountSession.token(ctx);
         final String cookie = AccountSession.cookie(ctx);
         if (token.isEmpty() && cookie.isEmpty()) return;
-        long at = prefs().getLong("acctAt", 0L);
-        String cached = AccountSession.cache(ctx);
-        if (System.currentTimeMillis() - at < ACCT_TTL_MS
-                && cached.startsWith(ctx.getString(R.string.wallet_acct_prefix))) {
-            acctToday.setText(cached);        // 5 分钟内不重复请求
-            double acctBal = accountBalance();
-            if (!Double.isNaN(acctBal) && bal.getText().toString().contains("--")) {
-                setBalanceValue(Bridge.fmt(acctBal));
-            }
-            return;
-        }
+        // 每次打开都重新取，缓存只用于首帧显示。
         ioRun(() -> {
             final int devOff = java.util.TimeZone.getDefault()
                     .getOffset(System.currentTimeMillis()) / 1000;
@@ -218,7 +204,7 @@ public final class WalletPanel {
                         ? ctx.getString(R.string.wallet_total_month, money(sp.month))
                         : ctx.getString(R.string.wallet_total_all, money(sp.total));
                 acctBalance = sp.balance;
-                if (!Double.isNaN(sp.balance) && (bal.getText().toString().contains("--"))) {
+                if (!Double.isNaN(sp.balance) && AccountSession.apiKey(ctx).isEmpty()) {
                     setBalanceValue(Bridge.fmt(sp.balance));
                 }
                 String line = ctx.getString(R.string.wallet_acct_line, todayTxt, totalTxt);
@@ -256,12 +242,10 @@ public final class WalletPanel {
         String cached = prefs().getString("wLine", "");
         String failText = ctx.getString(R.string.wallet_weather_fail);
         if (cached.startsWith(failText)) cached = "";   // 旧版本把失败写进了缓存，别再当有效数据
-        boolean fresh = System.currentTimeMillis() - at < WEATHER_TTL_MS;
         if (cached.contains("\n")) {
             String[] parts = cached.split("\n", 2);
             wNow.setText(parts[0]);          // 有缓存就先显示，别让面板空着
             wTomorrow.setText(parts[1]);
-            if (fresh) return;               // 10 分钟内不重复请求
         }
         ioRun(() -> {
             String[] out = {ctx.getString(R.string.wallet_weather_fail), ""};

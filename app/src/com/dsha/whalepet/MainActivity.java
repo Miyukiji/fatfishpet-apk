@@ -310,6 +310,21 @@ public class MainActivity extends Activity {
         });
         root.addView(repo2);
 
+        TextView releases = new TextView(this);
+        releases.setText("https://github.com/Miyukiji/fatfishpet-apk/releases");
+        releases.setTextColor(0xFF7FB2FF);
+        releases.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11f);
+        releases.setPadding(0, dp(2), 0, 0);
+        releases.setOnClickListener(v -> {
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://github.com/Miyukiji/fatfishpet-apk/releases")));
+            } catch (Throwable t) { Log.ignored("MainActivity", t);
+                // 没有浏览器
+            }
+        });
+        root.addView(releases);
+
         TextView help = button(getString(R.string.main_btn_help), R.drawable.btn_ghost, 0xFFD6E1F5);
         help.setOnClickListener(v -> startActivity(new Intent(this, HelpActivity.class)));
         root.addView(help, lp(0, dp(14), 0, 0));

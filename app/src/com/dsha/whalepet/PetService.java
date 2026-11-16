@@ -483,7 +483,11 @@ public class PetService extends Service implements PetSurface.Listener {
                 petW, petH,
                 WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-                        | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
+                        | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                        // 不受状态栏/导航栏临时显隐影响，坐标就是屏幕绝对坐标。
+                        // 最近任务、开屏广告改变 insets 时窗口不会被系统上移。
+                        | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+                        | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
                 PixelFormat.TRANSLUCENT);
         petLp.gravity = Gravity.TOP | Gravity.START;
         petLp.layoutInDisplayCutoutMode =
@@ -1848,8 +1852,8 @@ public class PetService extends Service implements PetSurface.Listener {
     /** 双击面板：交给 WalletPanel 组装与取数。 */
     private void showPanel(String kind) {
         if (panelShown && "wallet".equals(panelKind)) {
+            // 双击已打开的面板 = 重新取一次数据，不关掉。
             hidePanel();
-            return;
         }
         hideMenu();
         hideBubble();
